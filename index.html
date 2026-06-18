@@ -80,9 +80,10 @@
   .p-num{font-family:var(--head);font-size:42px;color:var(--red);opacity:.9;line-height:1;}
   .p-body{display:grid;grid-template-columns:1fr 1.45fr;gap:34px;padding:30px 28px 34px;}
   .p-text .tag{font-family:var(--head);letter-spacing:2px;font-size:11.5px;color:var(--red-ink);margin:0 0 8px;}
-  .p-text p{color:#34363c;margin-bottom:18px;font-size:15px;}
-  .p-text .contrib .tag{color:var(--text);}
-  .p-text .contrib p{font-style:italic;color:var(--mute);margin-bottom:0;}
+  .p-text p{color:#34363c;margin-bottom:14px;font-size:15px;}
+  .p-points{margin:0;padding-left:20px;}
+  .p-points li{color:#34363c;font-size:14px;margin-bottom:9px;line-height:1.5;}
+  .p-points li::marker{color:var(--red);}
   .gallery{display:grid;gap:12px;align-content:start;}
   .g-3{grid-template-columns:repeat(3,1fr);}
   .g-2{grid-template-columns:repeat(2,1fr);}
@@ -213,7 +214,39 @@
   <div class="wrap">
     <div class="sec-label">CURRICULUM VITAE</div>
     <h2 class="sec-title">Experience &amp; Education</h2>
-    <p class="sec-intro">A summary of my professional, academic and voluntary experience. The full CV is available as a <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank" style="color:var(--red-ink);font-weight:600;">downloadable PDF</a>.</p>
+    <p class="sec-intro">A summary of my project, professional, academic and voluntary experience. The full CV is available as a <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank" style="color:var(--red-ink);font-weight:600;">downloadable PDF</a>.</p>
+
+    <div class="cv-block">
+      <h3>OTHER RELEVANT PROJECT EXPERIENCE</h3>
+      <div class="role">
+        <h4>CFD Project — NACA0012 Aerofoil Analysis</h4>
+        <div class="when">Oct 2025 – Dec 2025</div>
+        <div class="org">Individual Project</div>
+        <ul>
+          <li>Performed a CFD analysis of turbulent flow over a NACA0012 hydrofoil in ANSYS Fluent using the k-ω SST turbulence model, computing lift and drag coefficients across angles of attack from 0° to 20° for tidal turbine blade applications.</li>
+          <li>Conducted a mesh sensitivity study comparing coarse and fine structured quadrilateral grids, validating computational accuracy for both attached and separated flow regimes and confirming aerodynamic stall onset between 16° and 20°.</li>
+        </ul>
+      </div>
+      <div class="role">
+        <h4>Business Development — Wearable Concussion Sensor (AxonGuard)</h4>
+        <div class="when">Mar 2025 – Jun 2025</div>
+        <div class="org">Team Lead · 13-member multidisciplinary team</div>
+        <ul>
+          <li>Led a 13-member multidisciplinary team in designing AxonGuard, a wearable concussion sensor for sports headgear integrating force-sensitive resistors, accelerometers and a low-power radio transmitter for real-time, pitch-wide impact alerting across a dual-format product (helmet and mesh cap).</li>
+          <li>Conducted market research and user surveys validating demand for affordable head impact detection in university sports.</li>
+          <li>Produced a full business case including financial forecasting, supply chain strategy, a go-to-market plan targeting university teams and grassroots clubs, and a scalability roadmap with future adaptations for construction and military applications.</li>
+        </ul>
+      </div>
+      <div class="role">
+        <h4>Wind Turbine Aerofoil Design Project</h4>
+        <div class="when">Apr 2024 – Jun 2024</div>
+        <div class="org">Group Project</div>
+        <ul>
+          <li>Designed, constructed and tested a wind turbine aerofoil model with the objective of maximising power extraction efficiency, applying blade aerodynamics and structural design principles.</li>
+          <li>Analysed performance across multiple fan output levels by measuring current, voltage and power to compute the coefficient of performance (Cp) and tip speed ratio, identifying optimal operating conditions and sources of experimental error.</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="cv-block">
       <h3>WORK EXPERIENCE</h3>
@@ -328,8 +361,12 @@
 const projects = [
   { num:"01", title:"Adaptive Electromagnetic Valve Timing (AEVT)",
     meta:"MEng Individual Project · Oct 2025 – May 2026", g:"g-3",
-    desc:"A solenoid-based, cam-less valve actuation prototype developed as a fully variable alternative to conventional camshaft-driven valve trains. A 12 V solenoid drives the valve to produce up to 15 mm of lift with spring return, while an Arduino control system using MOSFET switching and 4N35 optocoupler isolation generates variable-frequency PWM signals to simulate engine throttle and speed.",
-    role:"End-to-end mechanical design, material selection, circuit design and system testing, demonstrating the feasibility of electronically variable valve timing for improved efficiency and reduced pumping losses.",
+    desc:"A camless engine valve-train concept taken from first principles to a working, electronically controlled prototype.",
+    points:[
+      "Designed and built a solenoid-based cam-less valve actuation prototype as a fully variable alternative to conventional cam-driven systems, achieving up to 15 mm of valve lift with spring return.",
+      "Implemented an Arduino-based control system with MOSFET switching and optocoupler isolation to generate variable-frequency PWM signals simulating engine throttle and speed.",
+      "Completed end-to-end development covering mechanical design, material selection, circuit design and system testing, evaluating actuator frequency response and the feasibility of electronically variable valve timing for improved engine efficiency and reduced pumping losses."
+    ],
     imgs:[
       {s:"assets/projects/aevt_prototype.png",c:"Build prototype",t:1},
       {s:"assets/projects/aevt_assembly.png",c:"CAD assembly",t:1},
@@ -337,13 +374,19 @@ const projects = [
     ]},
   { num:"02", title:"Machine Learning-Based Adaptive Train Suspension",
     meta:"Group Project · Jan 2026 – Apr 2026", g:"g-1",
-    desc:"An ML-enhanced adaptive electronic suspension system for high-speed rail carriages. A two-degree-of-freedom mechanical model was formulated and an LSTM autoencoder trained on healthy vibration data to detect track anomalies in real time.",
-    role:"Designed a coordinated safety response combining rapid secondary damping adjustment with automatic speed reduction, shifting suspension behaviour from reactive control to predictive, data-driven fault detection.",
+    desc:"Bringing predictive, machine-learning fault detection to high-speed rail suspension.",
+    points:[
+      "Proposed and simulated an ML-enhanced adaptive electronic suspension system for high-speed rail carriages, formulating a two-degree-of-freedom mechanical model and training an LSTM autoencoder on healthy vibration data to detect track anomalies in real time.",
+      "Designed a coordinated safety response integrating rapid secondary damping adjustment and automatic speed reduction, shifting suspension behaviour from reactive control to predictive, data-driven fault detection."
+    ],
     imgs:[{s:"assets/projects/train_architecture.png",c:"System architecture and anomaly-detection sensing",t:1}]},
   { num:"03", title:"Biofuel Storage — AC Adsorption Measurement System",
     meta:"Group Design Project · Oct 2025 – Dec 2025", g:"g-2",
-    desc:"A portable, low-cost system for measuring the adsorption fill-up behaviour of activated carbon used in biogas transport. The dual-container pressure vessel arrangement enables methane storage testing at up to 12 bar within a £2,000 budget, sized to test 200 g of activated carbon and transportable over rough terrain by a single person.",
-    role:"Produced the design sketches and led concept selection for the final arrangement.",
+    desc:"A field-portable rig for characterising activated-carbon methane storage on a tight budget.",
+    points:[
+      "Contributed to designing a portable, low-cost system for measuring activated carbon adsorption fill-up behaviour in biogas transport, enabling methane storage testing at pressures up to 12 bar within a £2,000 budget.",
+      "Produced design sketches and led concept selection, supporting a dual-container pressure vessel arrangement sized to test 200 g of activated carbon and transportable over rough terrain by a single person."
+    ],
     imgs:[
       {s:"assets/projects/biogas_vacuum.jpeg",c:"Vacuum-line design concept"},
       {s:"assets/projects/biogas_wheeled.jpeg",c:"Transportable wheeled design"},
@@ -352,24 +395,33 @@ const projects = [
     ]},
   { num:"04", title:"Autonomous Track-Following Robot",
     meta:"Group Project · Oct 2024 – Mar 2025", g:"g-2",
-    desc:"An autonomous robot designed, built and programmed to follow a 15 m track, pass under a bridge and accurately launch two ping-pong balls into target zones at different distances. Twin light-dependent resistors in a Wheatstone bridge feed an op-amp and H-bridge driven motors, refined with PID control for smooth line following, with a servo-actuated elastic band mechanism that fires on wall contact.",
-    role:"Contributed to CAD modelling, PCB soldering and structured testing throughout development.",
+    desc:"An autonomous line-following robot with an onboard ball-targeting and firing system.",
+    points:[
+      "Designed, built and programmed an autonomous robot to follow a 15 m track and accurately launch two ping-pong balls into target zones at different distances, using LDR Wheatstone bridge sensing and PID-tuned motor control.",
+      "Engineered a servo-actuated elastic band firing mechanism triggered on wall contact, and contributed to CAD modelling, PCB soldering and structured testing throughout development."
+    ],
     imgs:[
       {s:"assets/projects/robot_chassis.jpeg",c:"Chassis and sensor layout"},
       {s:"assets/projects/robot_launcher.jpeg",c:"Ball-launcher mechanism",t:1}
     ]},
   { num:"05", title:"IMechE Foundation Design Challenge",
     meta:"Autonomous Vehicle · Group Project · Oct 2023 – Dec 2023", g:"g-2",
-    desc:"An autonomous vehicle built for the 2024 IMechE Foundation Design Challenge, capable of travelling to a vertical wall and returning to its starting point. Motor direction reversal is achieved through a DPDT switch-based circuit triggered on wall contact.",
-    role:"Calculated gear reduction ratios and motor specifications to meet target run time and repeatability requirements within a constrained £35 budget.",
+    desc:"A first-year autonomous vehicle challenge solved within a strict £35 budget.",
+    points:[
+      "Designed and built an autonomous vehicle for the 2024 IMechE Foundation Design Challenge, capable of travelling to a vertical wall and returning to its starting point via a DPDT switch-based motor direction reversal circuit.",
+      "Calculated gear reduction ratios and motor specifications to meet target run time and repeatability requirements within a constrained £35 budget."
+    ],
     imgs:[
       {s:"assets/projects/imeche_cad.jpeg",c:"Vehicle CAD model"},
       {s:"assets/projects/imeche_poster.png",c:"Design, circuit & calculations",t:1}
     ]},
   { num:"06", title:"Hydroponic Plant Growing System",
     meta:"Sustainability Design Project · 2019 – 2020", g:"g-1",
-    desc:"An indoor hydroponic plant growing system conceived to promote sustainable urban gardening. The design was informed by research into urban agriculture techniques and analysis of user needs and environmental constraints.",
-    role:"Produced multiple design iterations through sketching and CAD, then prototyped across various materials and refined with peer feedback to ensure functionality, durability and aesthetic quality.",
+    desc:"An early design project exploring sustainable indoor urban gardening.",
+    points:[
+      "Conceptualised and developed an indoor hydroponic plant growing system to promote sustainable urban gardening, conducting research into urban agriculture techniques and analysing user needs and environmental constraints to inform the design.",
+      "Produced multiple design iterations using sketches and CAD software, then prototyped the system across various materials, iterating with peer feedback to ensure functionality, durability and aesthetic quality."
+    ],
     imgs:[{s:"assets/projects/hydroponics.jpg",c:"Prototype growing system",t:1}]}
 ];
 
@@ -387,8 +439,9 @@ projects.forEach(p=>{
       </div>
       <div class="p-body">
         <div class="p-text">
-          <div><p class="tag">OVERVIEW</p><p>${p.desc}</p></div>
-          <div class="contrib"><p class="tag">MY CONTRIBUTION</p><p>${p.role}</p></div>
+          <p class="tag">OVERVIEW</p>
+          <p>${p.desc}</p>
+          <ul class="p-points">${p.points.map(pt=>`<li>${pt}</li>`).join("")}</ul>
         </div>
         <div class="gallery ${p.g}">${shots}</div>
       </div>
