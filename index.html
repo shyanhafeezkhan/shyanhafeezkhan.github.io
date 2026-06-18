@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shyan Hafeez Khan — Mechanical Engineering Portfolio</title>
+<meta name="description" content="Engineering project portfolio and CV of Shyan Hafeez Khan, final-year Mechanical Engineering student specialising in automotive and high-performance engineering." />
+<style>
+  :root{
+    --darker:#0e0f12; --dark:#17191f; --red:#e10600; --red-dim:#b30500;
+    --silver:#b7bbc2; --light:#f2f2f3; --card:#ffffff; --text:#1b1c20;
+    --mute:#5c5f66; --line:#e3e3e5;
+    --head:'Arial Black','Helvetica Neue',Arial,sans-serif;
+    --body:'Segoe UI',Calibri,'Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--body);color:var(--text);background:var(--light);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(14,15,18,.95);backdrop-filter:blur(6px);border-bottom:1px solid #23252c;}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{font-family:var(--head);color:#fff;font-size:16px;letter-spacing:1px;}
+  .brand b{color:var(--red);}
+  .nav-links{display:flex;gap:26px;}
+  .nav-links a{color:var(--silver);font-size:14px;letter-spacing:.3px;transition:color .2s;}
+  .nav-links a:hover{color:#fff;}
+  .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:24px;cursor:pointer;}
+  @media(max-width:760px){.nav-links{display:none;}}
+
+  /* HERO */
+  .hero{background:var(--darker);color:#fff;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--red);}
+  .hero-inner{padding:96px 0 84px;position:relative;}
+  .eyebrow{color:var(--red);font-family:var(--head);letter-spacing:3px;font-size:13px;margin-bottom:18px;}
+  .hero h1{font-family:var(--head);font-size:clamp(40px,7vw,76px);line-height:1.02;letter-spacing:1px;}
+  .hero h1 span{color:var(--red);display:block;}
+  .hero .sub{color:var(--silver);font-size:clamp(15px,2.2vw,19px);margin-top:22px;max-width:680px;}
+  .hero .tagline{font-style:italic;color:#c9ccd2;margin-top:14px;max-width:680px;}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:2px;font-weight:700;font-size:14px;letter-spacing:.4px;transition:transform .15s, background .2s;}
+  .btn-red{background:var(--red);color:#fff;}
+  .btn-red:hover{background:var(--red-dim);transform:translateY(-2px);}
+  .btn-ghost{border:1px solid #3a3d45;color:#fff;}
+  .btn-ghost:hover{border-color:#fff;transform:translateY(-2px);}
+
+  /* SECTION SHELL */
+  section{padding:80px 0;}
+  .sec-label{font-family:var(--head);letter-spacing:3px;font-size:13px;color:var(--red);margin-bottom:10px;}
+  .sec-title{font-family:var(--head);font-size:clamp(26px,4vw,40px);letter-spacing:.5px;color:var(--text);margin-bottom:8px;}
+  .sec-intro{color:var(--mute);max-width:720px;margin-bottom:42px;}
+  #about{background:#fff;border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start;}
+  .about-grid p{margin-bottom:16px;color:#34363c;}
+  .facts{background:var(--light);border:1px solid var(--line);border-left:5px solid var(--red);padding:26px;}
+  .facts h3{font-size:13px;letter-spacing:2px;color:var(--red);font-family:var(--head);margin-bottom:16px;}
+  .facts li{list-style:none;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14.5px;display:flex;justify-content:space-between;gap:12px;}
+  .facts li:last-child{border-bottom:0;}
+  .facts li span{color:var(--mute);}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:28px;}}
+
+  /* PROJECTS */
+  #projects{background:var(--light);}
+  .project{background:var(--card);border:1px solid var(--line);box-shadow:0 8px 26px rgba(0,0,0,.06);margin-bottom:40px;overflow:hidden;}
+  .p-head{background:var(--dark);color:#fff;padding:22px 28px;position:relative;border-left:8px solid var(--red);display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .p-head h3{font-family:var(--body);font-weight:700;font-size:clamp(18px,2.6vw,24px);}
+  .p-head .meta{color:var(--silver);font-size:13px;margin-top:4px;}
+  .p-num{font-family:var(--head);font-size:42px;color:var(--red);opacity:.9;line-height:1;}
+  .p-body{display:grid;grid-template-columns:1fr 1.45fr;gap:34px;padding:30px 28px 34px;}
+  .p-text .tag{font-family:var(--head);letter-spacing:2px;font-size:11.5px;color:var(--red);margin:0 0 8px;}
+  .p-text p{color:#34363c;margin-bottom:18px;font-size:15px;}
+  .p-text .contrib .tag{color:var(--text);}
+  .p-text .contrib p{font-style:italic;color:var(--mute);margin-bottom:0;}
+  .gallery{display:grid;gap:12px;align-content:start;}
+  .g-3{grid-template-columns:repeat(3,1fr);}
+  .g-2{grid-template-columns:repeat(2,1fr);}
+  .g-1{grid-template-columns:1fr;}
+  .shot{background:#fff;border:1px solid var(--line);padding:8px;cursor:zoom-in;transition:transform .15s, box-shadow .2s;}
+  .shot:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.12);}
+  .shot img{width:100%;height:170px;object-fit:contain;background:#fff;}
+  .shot.tall img{height:230px;}
+  .shot .cap{font-size:11.5px;color:var(--mute);font-style:italic;text-align:center;padding-top:7px;}
+  @media(max-width:860px){.p-body{grid-template-columns:1fr;gap:22px;}}
+  @media(max-width:520px){.g-3,.g-2{grid-template-columns:1fr 1fr;}}
+
+  /* CV */
+  #cv{background:#fff;border-top:1px solid var(--line);}
+  .cv-block{margin-bottom:46px;}
+  .cv-block > h3{font-family:var(--head);letter-spacing:1px;font-size:15px;color:var(--text);border-bottom:2px solid var(--red);display:inline-block;padding-bottom:6px;margin-bottom:22px;}
+  .role{display:grid;grid-template-columns:1fr auto;gap:6px 18px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .role:last-child{border-bottom:0;}
+  .role h4{font-size:16px;}
+  .role .org{color:var(--red);font-size:14px;font-weight:600;}
+  .role .when{color:var(--mute);font-size:13px;white-space:nowrap;text-align:right;}
+  .role ul{grid-column:1/-1;margin:8px 0 0;padding-left:18px;}
+  .role ul li{font-size:14px;color:#34363c;margin-bottom:4px;}
+  .skills-grid{display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{background:var(--light);border:1px solid var(--line);border-left:3px solid var(--red);padding:8px 14px;font-size:13.5px;color:var(--text);}
+
+  /* CONTACT */
+  #contact{background:var(--darker);color:#fff;text-align:center;}
+  #contact .sec-title{color:#fff;}
+  #contact p{color:var(--silver);max-width:560px;margin:0 auto 30px;}
+  .contact-row{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;}
+  footer{background:#08090b;color:#6b6e76;text-align:center;padding:26px;font-size:13px;}
+  footer b{color:var(--silver);}
+
+  /* LIGHTBOX */
+  .lb{position:fixed;inset:0;background:rgba(8,9,11,.93);display:none;align-items:center;justify-content:center;z-index:100;padding:30px;cursor:zoom-out;}
+  .lb.open{display:flex;}
+  .lb img{max-width:94vw;max-height:90vh;object-fit:contain;box-shadow:0 0 40px rgba(0,0,0,.6);}
+  .lb .lb-cap{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:#d7d9de;font-style:italic;font-size:14px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">SHYAN HAFEEZ <b>KHAN</b></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#cv">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank">CV (PDF)</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top" style="padding:0;">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">MECHANICAL ENGINEERING PORTFOLIO</div>
+    <h1>SHYAN HAFEEZ<span>KHAN</span></h1>
+    <p class="sub">Final-year Mechanical Engineering student at Lancaster University, on track for a First, with a genuine passion for the automotive sector and high-performance engineering.</p>
+    <p class="tagline">End-to-end engineering across design, simulation and build — from an electromagnetic valve-timing prototype to CFD aerofoil analysis.</p>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-red">View Projects</a>
+      <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank" class="btn btn-ghost">Download CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-label">ABOUT</div>
+    <h2 class="sec-title">Engineering, end to end</h2>
+    <div class="about-grid">
+      <div>
+        <p>I am a final-year Mechanical Engineering student with an understanding of engineering first principles and a love for performance cars and the wider automotive sector. I enjoy taking projects from concept through to a working build, covering mechanical design, simulation, electronics and testing.</p>
+        <p>I have pursued technically rigorous projects including an adaptive electromagnetic valve-timing prototype and a CFD analysis of a NACA0012 aerofoil, developing strong end-to-end engineering skills. I have also demonstrated leadership, directing a 13-member multidisciplinary team, and I thrive in fast-paced environments — as shown by my work for the BT Group alongside my studies.</p>
+        <p>I am eager to apply my technical foundations and enthusiasm in a challenging graduate or placement role within the automotive or high-performance engineering industry.</p>
+      </div>
+      <div class="facts">
+        <h3>AT A GLANCE</h3>
+        <ul>
+          <li>Focus <span>Automotive &amp; high-performance</span></li>
+          <li>Degree <span>Mechanical Engineering</span></li>
+          <li>University <span>Lancaster</span></li>
+          <li>Result <span>Expecting a First (1:1)</span></li>
+          <li>Location <span>London / Lancaster, UK</span></li>
+          <li>Status <span>Seeking graduate / placement role</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-label">SELECTED WORK</div>
+    <h2 class="sec-title">Project Portfolio</h2>
+    <p class="sec-intro">A selection of design, simulation and build projects. Click any image to enlarge.</p>
+    <div id="projectList"></div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="wrap">
+    <div class="sec-label">CURRICULUM VITAE</div>
+    <h2 class="sec-title">Experience &amp; Education</h2>
+    <p class="sec-intro">A summary of my professional, academic and voluntary experience. The full CV is available as a <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank" style="color:var(--red);font-weight:600;">downloadable PDF</a>.</p>
+
+    <div class="cv-block">
+      <h3>WORK EXPERIENCE</h3>
+      <div class="role">
+        <h4>Engineering Student Ambassador</h4>
+        <div class="when">Dec 2024 – Jun 2026</div>
+        <div class="org">Faculty of Science and Technology, Lancaster University</div>
+        <ul>
+          <li>Represented the Engineering Department at open days and outreach events, showcasing state-of-the-art equipment and its applications.</li>
+          <li>Delivered campus tours and department presentations on course content, facilities and student life.</li>
+          <li>Supported widening participation by mentoring applicants from underrepresented backgrounds.</li>
+        </ul>
+      </div>
+      <div class="role">
+        <h4>Telecommunications Sales</h4>
+        <div class="when">Nov 2024 – Jun 2025</div>
+        <div class="org">EE (BT Group)</div>
+        <ul>
+          <li>Consistently exceeded targets, including mobile sales (up 12%) and customer enrichment (up 15%).</li>
+          <li>Delivered tailored solutions and upsold services, increasing retention and ARPU by up to 10%.</li>
+          <li>Resolved billing, upgrade and contract queries, improving sentiment scores by 17% and reducing complaints.</li>
+        </ul>
+      </div>
+      <div class="role">
+        <h4>Financial Administrator</h4>
+        <div class="when">Nov 2017 – Nov 2018</div>
+        <div class="org">Excel Energy Solutions Ltd</div>
+        <ul>
+          <li>Maintained accurate financial records by recording daily transactions and reconciling accounts.</li>
+          <li>Organised receipts and calculated VAT deductions by expense category in Microsoft Excel.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>EDUCATION</h3>
+      <div class="role">
+        <h4>Lancaster University</h4>
+        <div class="when">Oct 2023 – Present</div>
+        <div class="org">Mechanical Engineering — Expecting First-Class Honours (1:1)</div>
+      </div>
+      <div class="role">
+        <h4>RR6 Sixth Form, Rutlish School</h4>
+        <div class="when">Sep 2020 – Aug 2022</div>
+        <div class="org">A-Levels: Mathematics, Further Mathematics, Physics, Chemistry</div>
+        <ul><li>Senior Maths Challenge 2021 — Silver (Top 16%).</li></ul>
+      </div>
+      <div class="role">
+        <h4>Rutlish School</h4>
+        <div class="when">Jan 2016 – Aug 2020</div>
+        <div class="org">GCSEs: Grades 9–7 in 11 subjects, including English and Maths</div>
+        <ul><li>FSMQ Level 3 Additional Maths (A); UAL Level 2 Drawing Award; Duke of Edinburgh Bronze.</li></ul>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>TECHNICAL SKILLS</h3>
+      <div class="skills-grid">
+        <span class="chip">CAD &amp; SolidWorks</span>
+        <span class="chip">CFD (ANSYS Fluent)</span>
+        <span class="chip">Mechanical design</span>
+        <span class="chip">Arduino &amp; embedded control</span>
+        <span class="chip">Circuit &amp; PCB design</span>
+        <span class="chip">PID control</span>
+        <span class="chip">Machine learning (LSTM)</span>
+        <span class="chip">Prototyping &amp; testing</span>
+        <span class="chip">Material selection</span>
+        <span class="chip">Technical reporting</span>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>VOLUNTEERING</h3>
+      <div class="role">
+        <h4>Charity Hikes</h4>
+        <div class="when">Nov 2023 – Apr 2026</div>
+        <div class="org">Lake District, Peak District &amp; East Sussex</div>
+        <ul><li>Raised funds for causes including clean-water wells and food relief through self-managed social-media campaigns.</li></ul>
+      </div>
+      <div class="role">
+        <h4>First Give Charity Programme</h4>
+        <div class="when">Jun 2018</div>
+        <div class="org">Rutlish School</div>
+        <ul><li>Led a team to raise £2,775 for Scope, winning the £1,000 First Give grand prize after a panel presentation.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-label" style="color:var(--red);">GET IN TOUCH</div>
+    <h2 class="sec-title">Let's talk engineering</h2>
+    <p>I'm actively seeking graduate and placement opportunities in the automotive and high-performance engineering sector. The best way to reach me is by email or LinkedIn.</p>
+    <div class="contact-row">
+      <a href="mailto:shyan.khan@outlook.com" class="btn btn-red">Email me</a>
+      <a href="https://www.linkedin.com/in/shyanhafeezkhan" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank" class="btn btn-ghost">Download CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>Shyan Hafeez Khan</b> — Mechanical Engineering Portfolio · Built 2026
+</footer>
+
+<div class="lb" id="lightbox"><img src="" alt="" id="lbImg"><div class="lb-cap" id="lbCap"></div></div>
+
+<script>
+const projects = [
+  { num:"01", title:"Adaptive Electromagnetic Valve Timing (AEVT)",
+    meta:"MEng Individual Project · Oct 2025 – May 2026", g:"g-3",
+    desc:"A solenoid-based, cam-less valve actuation prototype developed as a fully variable alternative to conventional camshaft-driven valve trains. A 12 V solenoid drives the valve to produce up to 15 mm of lift with spring return, while an Arduino control system using MOSFET switching and 4N35 optocoupler isolation generates variable-frequency PWM signals to simulate engine throttle and speed.",
+    role:"End-to-end mechanical design, material selection, circuit design and system testing, demonstrating the feasibility of electronically variable valve timing for improved efficiency and reduced pumping losses.",
+    imgs:[
+      {s:"assets/projects/aevt_prototype.png",c:"Build prototype",t:1},
+      {s:"assets/projects/aevt_assembly.png",c:"CAD assembly",t:1},
+      {s:"assets/projects/aevt_exploded.png",c:"Exploded view",t:1}
+    ]},
+  { num:"02", title:"Machine Learning-Based Adaptive Train Suspension",
+    meta:"Group Project · Jan 2026 – Apr 2026", g:"g-1",
+    desc:"An ML-enhanced adaptive electronic suspension system for high-speed rail carriages. A two-degree-of-freedom mechanical model was formulated and an LSTM autoencoder trained on healthy vibration data to detect track anomalies in real time.",
+    role:"Designed a coordinated safety response combining rapid secondary damping adjustment with automatic speed reduction, shifting suspension behaviour from reactive control to predictive, data-driven fault detection.",
+    imgs:[{s:"assets/projects/train_architecture.png",c:"System architecture and anomaly-detection sensing",t:1}]},
+  { num:"03", title:"Biofuel Storage — AC Adsorption Measurement System",
+    meta:"Group Design Project · Oct 2025 – Dec 2025", g:"g-2",
+    desc:"A portable, low-cost system for measuring the adsorption fill-up behaviour of activated carbon used in biogas transport. The dual-container pressure vessel arrangement enables methane storage testing at up to 12 bar within a £2,000 budget, sized to test 200 g of activated carbon and transportable over rough terrain by a single person.",
+    role:"Produced the design sketches and led concept selection for the final arrangement.",
+    imgs:[
+      {s:"assets/projects/biogas_vacuum.jpeg",c:"Vacuum-line design concept"},
+      {s:"assets/projects/biogas_wheeled.jpeg",c:"Transportable wheeled design"},
+      {s:"assets/projects/biogas_iteration.jpeg",c:"Design iteration"},
+      {s:"assets/projects/biogas_cad.jpeg",c:"Final CAD arrangement"}
+    ]},
+  { num:"04", title:"Autonomous Track-Following Robot",
+    meta:"Group Project · Oct 2024 – Mar 2025", g:"g-2",
+    desc:"An autonomous robot designed, built and programmed to follow a 15 m track, pass under a bridge and accurately launch two ping-pong balls into target zones at different distances. Twin light-dependent resistors in a Wheatstone bridge feed an op-amp and H-bridge driven motors, refined with PID control for smooth line following, with a servo-actuated elastic band mechanism that fires on wall contact.",
+    role:"Contributed to CAD modelling, PCB soldering and structured testing throughout development.",
+    imgs:[
+      {s:"assets/projects/robot_chassis.jpeg",c:"Chassis and sensor layout"},
+      {s:"assets/projects/robot_launcher.jpeg",c:"Ball-launcher mechanism",t:1}
+    ]},
+  { num:"05", title:"IMechE Foundation Design Challenge",
+    meta:"Autonomous Vehicle · Group Project · Oct 2023 – Dec 2023", g:"g-2",
+    desc:"An autonomous vehicle built for the 2024 IMechE Foundation Design Challenge, capable of travelling to a vertical wall and returning to its starting point. Motor direction reversal is achieved through a DPDT switch-based circuit triggered on wall contact.",
+    role:"Calculated gear reduction ratios and motor specifications to meet target run time and repeatability requirements within a constrained £35 budget.",
+    imgs:[
+      {s:"assets/projects/imeche_cad.jpeg",c:"Vehicle CAD model"},
+      {s:"assets/projects/imeche_poster.png",c:"Design, circuit & calculations",t:1}
+    ]},
+  { num:"06", title:"Hydroponic Plant Growing System",
+    meta:"Sustainability Design Project · 2019 – 2020", g:"g-1",
+    desc:"An indoor hydroponic plant growing system conceived to promote sustainable urban gardening. The design was informed by research into urban agriculture techniques and analysis of user needs and environmental constraints.",
+    role:"Produced multiple design iterations through sketching and CAD, then prototyped across various materials and refined with peer feedback to ensure functionality, durability and aesthetic quality.",
+    imgs:[{s:"assets/projects/hydroponics.jpg",c:"Prototype growing system",t:1}]}
+];
+
+const list = document.getElementById("projectList");
+projects.forEach(p=>{
+  const shots = p.imgs.map(im=>
+    `<figure class="shot${im.t?' tall':''}" data-src="${im.s}" data-cap="${im.c}">
+       <img src="${im.s}" alt="${im.c}" loading="lazy"><figcaption class="cap">${im.c}</figcaption>
+     </figure>`).join("");
+  list.insertAdjacentHTML("beforeend",
+   `<article class="project">
+      <div class="p-head">
+        <div><h3>${p.title}</h3><div class="meta">${p.meta}</div></div>
+        <div class="p-num">${p.num}</div>
+      </div>
+      <div class="p-body">
+        <div class="p-text">
+          <div><p class="tag">OVERVIEW</p><p>${p.desc}</p></div>
+          <div class="contrib"><p class="tag">MY CONTRIBUTION</p><p>${p.role}</p></div>
+        </div>
+        <div class="gallery ${p.g}">${shots}</div>
+      </div>
+    </article>`);
+});
+
+// Lightbox
+const lb=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbCap=document.getElementById("lbCap");
+document.addEventListener("click",e=>{
+  const fig=e.target.closest(".shot");
+  if(fig){lbImg.src=fig.dataset.src;lbCap.textContent=fig.dataset.cap;lb.classList.add("open");}
+  else if(e.target===lb||e.target===lbImg){lb.classList.remove("open");}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")lb.classList.remove("open");});
+</script>
+</body>
+</html>
