@@ -7,7 +7,7 @@
 <meta name="description" content="Engineering project portfolio and CV of Shyan Hafeez Khan, final-year Mechanical Engineering student specialising in automotive and high-performance engineering." />
 <style>
   :root{
-    --darker:#0e0f12; --dark:#17191f; --red:#e10600; --red-dim:#b30500;
+    --darker:#0e0f12; --dark:#17191f; --red:#00d2be; --red-dim:#00b3a4; --red-ink:#0a8f7f;
     --silver:#b7bbc2; --light:#f2f2f3; --card:#ffffff; --text:#1b1c20;
     --mute:#5c5f66; --line:#e3e3e5;
     --head:'Arial Black','Helvetica Neue',Arial,sans-serif;
@@ -15,7 +15,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  body{font-family:var(--body);color:var(--text);background:var(--light);line-height:1.6;}
+  body{font-family:var(--body);color:var(--text);background:var(--light);line-height:1.6;overflow-x:hidden;}
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
   .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
@@ -24,39 +24,48 @@
   header.nav{position:sticky;top:0;z-index:50;background:rgba(14,15,18,.95);backdrop-filter:blur(6px);border-bottom:1px solid #23252c;}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
   .brand{font-family:var(--head);color:#fff;font-size:16px;letter-spacing:1px;}
-  .brand b{color:var(--red);}
+  .brand b{color:inherit;}
   .nav-links{display:flex;gap:26px;}
   .nav-links a{color:var(--silver);font-size:14px;letter-spacing:.3px;transition:color .2s;}
   .nav-links a:hover{color:#fff;}
-  .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:24px;cursor:pointer;}
-  @media(max-width:760px){.nav-links{display:none;}}
+  .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:26px;line-height:1;cursor:pointer;padding:6px;}
+  @media(max-width:760px){
+    .nav-toggle{display:block;}
+    .nav-links{
+      display:none;position:absolute;top:62px;left:0;right:0;
+      background:#0e0f12;border-bottom:1px solid #23252c;
+      flex-direction:column;gap:0;padding:6px 0;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:14px 24px;font-size:16px;border-top:1px solid #1d1f25;}
+  }
 
   /* HERO */
   .hero{background:var(--darker);color:#fff;position:relative;overflow:hidden;}
   .hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--red);}
-  .hero-inner{padding:96px 0 84px;position:relative;}
+  .hero-inner{padding:96px 24px 84px 46px;position:relative;}
   .eyebrow{color:var(--red);font-family:var(--head);letter-spacing:3px;font-size:13px;margin-bottom:18px;}
   .hero h1{font-family:var(--head);font-size:clamp(40px,7vw,76px);line-height:1.02;letter-spacing:1px;}
-  .hero h1 span{color:var(--red);display:block;}
+  .hero h1 span{display:block;}
   .hero .sub{color:var(--silver);font-size:clamp(15px,2.2vw,19px);margin-top:22px;max-width:680px;}
   .hero .tagline{font-style:italic;color:#c9ccd2;margin-top:14px;max-width:680px;}
   .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
   .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:2px;font-weight:700;font-size:14px;letter-spacing:.4px;transition:transform .15s, background .2s;}
-  .btn-red{background:var(--red);color:#fff;}
+  .btn-red{background:var(--red);color:#04221f;}
   .btn-red:hover{background:var(--red-dim);transform:translateY(-2px);}
   .btn-ghost{border:1px solid #3a3d45;color:#fff;}
   .btn-ghost:hover{border-color:#fff;transform:translateY(-2px);}
 
   /* SECTION SHELL */
   section{padding:80px 0;}
-  .sec-label{font-family:var(--head);letter-spacing:3px;font-size:13px;color:var(--red);margin-bottom:10px;}
+  .sec-label{font-family:var(--head);letter-spacing:3px;font-size:13px;color:var(--red-ink);margin-bottom:10px;}
   .sec-title{font-family:var(--head);font-size:clamp(26px,4vw,40px);letter-spacing:.5px;color:var(--text);margin-bottom:8px;}
   .sec-intro{color:var(--mute);max-width:720px;margin-bottom:42px;}
   #about{background:#fff;border-bottom:1px solid var(--line);}
   .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start;}
   .about-grid p{margin-bottom:16px;color:#34363c;}
   .facts{background:var(--light);border:1px solid var(--line);border-left:5px solid var(--red);padding:26px;}
-  .facts h3{font-size:13px;letter-spacing:2px;color:var(--red);font-family:var(--head);margin-bottom:16px;}
+  .facts h3{font-size:13px;letter-spacing:2px;color:var(--red-ink);font-family:var(--head);margin-bottom:16px;}
   .facts li{list-style:none;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14.5px;display:flex;justify-content:space-between;gap:12px;}
   .facts li:last-child{border-bottom:0;}
   .facts li span{color:var(--mute);}
@@ -70,7 +79,7 @@
   .p-head .meta{color:var(--silver);font-size:13px;margin-top:4px;}
   .p-num{font-family:var(--head);font-size:42px;color:var(--red);opacity:.9;line-height:1;}
   .p-body{display:grid;grid-template-columns:1fr 1.45fr;gap:34px;padding:30px 28px 34px;}
-  .p-text .tag{font-family:var(--head);letter-spacing:2px;font-size:11.5px;color:var(--red);margin:0 0 8px;}
+  .p-text .tag{font-family:var(--head);letter-spacing:2px;font-size:11.5px;color:var(--red-ink);margin:0 0 8px;}
   .p-text p{color:#34363c;margin-bottom:18px;font-size:15px;}
   .p-text .contrib .tag{color:var(--text);}
   .p-text .contrib p{font-style:italic;color:var(--mute);margin-bottom:0;}
@@ -93,7 +102,7 @@
   .role{display:grid;grid-template-columns:1fr auto;gap:6px 18px;padding:16px 0;border-bottom:1px solid var(--line);}
   .role:last-child{border-bottom:0;}
   .role h4{font-size:16px;}
-  .role .org{color:var(--red);font-size:14px;font-weight:600;}
+  .role .org{color:var(--red-ink);font-size:14px;font-weight:600;}
   .role .when{color:var(--mute);font-size:13px;white-space:nowrap;text-align:right;}
   .role ul{grid-column:1/-1;margin:8px 0 0;padding-left:18px;}
   .role ul li{font-size:14px;color:#34363c;margin-bottom:4px;}
@@ -113,6 +122,22 @@
   .lb.open{display:flex;}
   .lb img{max-width:94vw;max-height:90vh;object-fit:contain;box-shadow:0 0 40px rgba(0,0,0,.6);}
   .lb .lb-cap{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:#d7d9de;font-style:italic;font-size:14px;}
+
+  /* SMALL SCREENS */
+  @media(max-width:600px){
+    section{padding:52px 0;}
+    .hero-inner{padding:64px 18px 56px 30px;}
+    .wrap{padding:0 18px;}
+    .hero h1{letter-spacing:0;}
+    .p-head{padding:18px 20px;}
+    .p-head .p-num{font-size:34px;}
+    .p-body{padding:22px 18px 26px;gap:20px;}
+    .role{grid-template-columns:1fr;}
+    .role .when{text-align:left;}
+    .cta-row .btn,.contact-row .btn{flex:1 1 auto;justify-content:center;}
+    .shot img{height:150px;}
+    .shot.tall img{height:200px;}
+  }
 </style>
 </head>
 <body>
@@ -120,11 +145,13 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="brand">SHYAN HAFEEZ <b>KHAN</b></a>
-    <nav class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <nav class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#cv">Experience</a>
       <a href="#contact">Contact</a>
+      <a href="assets/Shyan-Khan-Project-Portfolio.pdf" target="_blank">Portfolio (PDF)</a>
       <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank">CV (PDF)</a>
     </nav>
   </div>
@@ -139,6 +166,7 @@
     <p class="tagline">End-to-end engineering across design, simulation and build — from an electromagnetic valve-timing prototype to CFD aerofoil analysis.</p>
     <div class="cta-row">
       <a href="#projects" class="btn btn-red">View Projects</a>
+      <a href="assets/Shyan-Khan-Project-Portfolio.pdf" target="_blank" class="btn btn-ghost">Download Portfolio (PDF)</a>
       <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank" class="btn btn-ghost">Download CV (PDF)</a>
     </div>
   </div>
@@ -185,7 +213,7 @@
   <div class="wrap">
     <div class="sec-label">CURRICULUM VITAE</div>
     <h2 class="sec-title">Experience &amp; Education</h2>
-    <p class="sec-intro">A summary of my professional, academic and voluntary experience. The full CV is available as a <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank" style="color:var(--red);font-weight:600;">downloadable PDF</a>.</p>
+    <p class="sec-intro">A summary of my professional, academic and voluntary experience. The full CV is available as a <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank" style="color:var(--red-ink);font-weight:600;">downloadable PDF</a>.</p>
 
     <div class="cv-block">
       <h3>WORK EXPERIENCE</h3>
@@ -284,6 +312,7 @@
     <div class="contact-row">
       <a href="mailto:shyan.khan@outlook.com" class="btn btn-red">Email me</a>
       <a href="https://www.linkedin.com/in/shyanhafeezkhan" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="assets/Shyan-Khan-Project-Portfolio.pdf" target="_blank" class="btn btn-ghost">Download Portfolio</a>
       <a href="assets/Shyan-Hafeez-Khan-CV.pdf" target="_blank" class="btn btn-ghost">Download CV</a>
     </div>
   </div>
@@ -374,6 +403,16 @@ document.addEventListener("click",e=>{
   else if(e.target===lb||e.target===lbImg){lb.classList.remove("open");}
 });
 document.addEventListener("keydown",e=>{if(e.key==="Escape")lb.classList.remove("open");});
+
+// Mobile menu
+const navToggle=document.getElementById("navToggle"),navLinks=document.getElementById("navLinks");
+function closeNav(){navLinks.classList.remove("open");navToggle.innerHTML="&#9776;";navToggle.setAttribute("aria-expanded","false");}
+navToggle.addEventListener("click",()=>{
+  const open=navLinks.classList.toggle("open");
+  navToggle.innerHTML=open?"&times;":"&#9776;";
+  navToggle.setAttribute("aria-expanded",open);
+});
+navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeNav));
 </script>
 </body>
 </html>
